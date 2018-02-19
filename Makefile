@@ -3,10 +3,8 @@ all : test
 test : test.ml redblacktree.cmx
 
 # rules
-OL := ocamllex
-OY := ocamlyacc
 OO := ocamlfind opt
-PACKAGES := ppx_deriving.show str
+PACKAGES := 
 OOC := $(OO) $(addprefix -package ,$(PACKAGES)) -linkpkg -c
 OOO := $(OO) $(addprefix -package ,$(PACKAGES)) -linkpkg -linkall -o
 

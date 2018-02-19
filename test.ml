@@ -6,13 +6,26 @@ let print_int_list ls =
   |> List.fold_left (fun res p -> p ^ " " ^ res) ""
   |> print_endline
 
-let orig = [1;3;6;4;5;6;]
-let conv = orig
-           |> T.tree_of_list 
-           |> T.list_of_tree
+let test orig =
+  (* let () = print_string "orig: " in
+   * let () = print_int_list orig in *)
+  let conv = orig
+             |> T.tree_of_list 
+             |> T.list_of_tree in
+  (* let () = print_string "conv: " in
+   * let () = print_int_list conv in *)
+  if (List.sort_uniq compare orig) = conv
+  then print_endline "match"
+  else print_endline "unmatch"
 
-let () = print_string "orig: "
-let () = print_int_list orig
+let rec range n =
+  if n <= 0
+  then []
+  else n :: range (n - 1)
 
-let () = print_string "conv: "
-let () = print_int_list conv
+let testcase = [[1;3;6;4;5;6;];[1200;234;22341;-234;466;];[2;3543;22;25346;22;]; 
+                List.rev (range 10000);
+                List.rev (range 234352);
+                range 10000;]
+
+let () = List.iter test testcase
