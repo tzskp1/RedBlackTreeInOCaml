@@ -1,4 +1,4 @@
-module T = Redblacktree
+module T = Redblacktree.Make (struct type t = int let compare = compare end)
 
 let print_int_list ls =
   List.rev ls

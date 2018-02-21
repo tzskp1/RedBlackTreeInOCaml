@@ -1,6 +1,7 @@
 all : test
 
-test : test.ml redblacktree.cmx
+redblacktree.cmx: redblacktree.ml redblacktree.cmi
+test: test.ml redblacktree.cmx
 
 # rules
 OO := ocamlfind opt
